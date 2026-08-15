@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>குடும்ப மரம் / පවුල් වෘක්ෂය தகவல் படிவம்</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+    --primary:#1f6f5f; --primary2:#174f45; --border:#d9dee7; --accent:#eef7f4;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:"Noto Sans Tamil","Latha","Arial Unicode MS",Arial,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.5;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:18px}
+  .hero{
+    background:linear-gradient(135deg,#1f6f5f,#2e8b77);
+    color:#fff;padding:28px 22px;border-radius:18px;margin:10px 0 18px;
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
+  }
+  .hero h1{margin:0 0 8px;font-size:28px}
+  .hero p{margin:0;line-height:1.6;opacity:.95}
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:20px;margin:14px 0;box-shadow:0 5px 16px rgba(0,0,0,.04);
+  }
+  h2{font-size:20px;margin:0 0 16px;color:var(--primary2)}
+  label{display:block;font-weight:600;margin:14px 0 6px}
+  .hint{font-size:12px;color:var(--muted);font-weight:400}
+  input,select,textarea{
+    width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:10px;
+    font-size:16px;background:#fff;
+  }
+  textarea{min-height:90px;resize:vertical}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .child{
+    background:var(--accent);border:1px solid #cfe7df;border-radius:14px;
+    padding:16px;margin-top:12px;
+  }
+  .child h3{margin:0 0 10px;font-size:17px;color:var(--primary2)}
+  .checkline{display:flex;align-items:flex-start;gap:10px;margin-top:12px}
+  .checkline input{width:auto;margin-top:4px}
+  button{
+    width:100%;border:0;border-radius:12px;padding:14px 16px;font-size:17px;font-weight:700;
+    cursor:pointer;margin-top:10px;
+  }
+  .primary{background:var(--primary);color:white}
+  .secondary{background:#e9edf3;color:#253047}
+  .success{
+    display:none;background:#eaf7ef;border:1px solid #b9dfc6;color:#225d35;
+    padding:14px;border-radius:12px;margin-top:14px;
+  }
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>எங்கள் குடும்ப மரம் / අපගේ පවුල් වෘක්ෂය / Our Family Tree</h1>
+    <p>ஒவ்வொரு குடும்பமும் / வீட்டாரும் ஒரு படிவத்தை பூர்த்தி செய்யவும். இந்தத் தகவல்கள் எங்கள் தனிப்பட்ட குடும்ப மரத்தை உருவாக்கவும் புதுப்பித்துப் பராமரிக்கவும் பயன்படுத்தப்படும்.<br><br>සෑම පවුලක් / ගෘහ ඒකකයක් සඳහාම එක් පෝරමයක් සම්පූර්ණ කරන්න. මෙම තොරතුරු අපගේ පුද්ගලික පවුල් වෘක්ෂය සකස් කිරීමට සහ යාවත්කාලීනව පවත්වා ගැනීමට භාවිතා කරනු ඇත.<br><br>Please complete one form per family/household. The information will be used to build and maintain our private family tree.</p>
+  </div>
+
+  <iframe name="submitFrame" id="submitFrame" style="display:none;"></iframe>
+
+  <form id="familyForm" action="https://script.google.com/macros/s/AKfycbw2DAV4Zv2MNTzIrTD6v6nClScRT8F6fhT_dJur-rrxos7BzFJ7GSdkmy9Zg6SefXN9rQ/exec" method="POST" target="submitFrame">
+    <div class="card">
+      <h2>1. குடும்ப உறுப்பினர் விவரங்கள் / පවුලේ සාමාජික විස්තර / Family Member Details</h2>
+
+      <label>முழுப் பெயர் * / සම්පූර්ණ නම * / Full Name *</label>
+      <input name="full_name" required />
+
+      <div class="grid">
+        <div>
+          <label>பாலினம் * / ස්ත්‍රී පුරුෂ භාවය * / Gender *</label>
+          <select name="gender" required>
+            <option value="">தேர்ந்தெடுக்கவும் / තෝරන්න / Select</option>
+            <option>ஆண் / පිරිමි / Male</option>
+            <option>பெண் / ගැහැණු / Female</option>
+          </select>
+        </div>
+        <div>
+          <label>பிறந்த தேதி / උපන් දිනය / Date of Birth</label>
+          <input type="date" name="dob" />
+        </div>
+      </div>
+
+      <label>தந்தையின் முழுப் பெயர் * / පියාගේ සම්පූර්ණ නම * / Father's Full Name * / සම්පූර්ණ නම *</label>
+      <input name="father_name" required />
+
+      <label>தாயின் முழுப் பெயர் * / මවගේ සම්පූර්ණ නම * / Mother's Full Name * / සම්පූර්ණ නම *</label>
+      <input name="mother_name" required />
+
+      <div class="grid">
+        <div>
+          <label>திருமண நிலை / විවාහක තත්ත්වය / Marital Status</label>
+          <select name="marital_status">
+            <option value="">தேர்ந்தெடுக்கவும் / තෝරන්න / Select</option>
+            <option>திருமணமானவர் / විවාහක / Married</option>
+            <option>திருமணமாகாதவர் / අවිවාහක / Single</option>
+            <option>விதவை / விதவர் / වැන්දඹු / Widowed</option>
+          </select>
+        </div>
+        <div>
+          <label>துணையின் முழுப் பெயர் / කලත්‍රයාගේ සම්පූර්ණ නම / Spouse's Full Name</label>
+          <input name="spouse_name" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>கைபேசி / WhatsApp எண் / ජංගම / WhatsApp අංකය / Mobile / WhatsApp</label>
+          <input type="tel" name="mobile" placeholder="+971..." />
+        </div>
+        <div>
+          <label>வேலை / தொழில் / රැකියාව / වෘත්තිය / Occupation / Profession</label>
+          <input name="occupation" />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>தற்போது வசிக்கும் நாடு * / දැනට පදිංචි රට * / Country of Residence *</label>
+          <input name="country" required />
+        </div>
+        <div>
+          <label>நகரம் / ஊர் / නගරය / ගම / City / Town</label>
+          <input name="city" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>2. குடும்பத் தொடர்பு / පවුල් සම්බන්ධතාවය / Family Connection</h2>
+
+      <label>குடும்ப கிளை / தாத்தா அல்லது பாட்டியின் பெயர் * / පවුල් ශාඛාව / සීයා හෝ ආච්චිගේ නම * / Family Branch / Grandparent's Name *</label>
+      <input name="family_branch" required />
+
+      <label>முக்கிய குடும்பத்துடன் உங்கள் உறவு / ප්‍රධාන පවුල සමඟ ඔබගේ සම්බන්ධතාවය / Relationship to Main Family</label>
+      <select name="relationship">
+        <option value="">தேர்ந்தெடுக்கவும் / තෝරන්න / Select</option>
+        <option>மகன் / மகள் / පුතා / දුව / Son / Daughter</option>
+        <option>மருமகன் / மருமகள் / බෑණා / ලේලිය / Son-in-law / Daughter-in-law</option>
+        <option>பேரன் / பேத்தி / මුණුබුරා / මිණිබිරිය / Grandchild</option>
+        <option>பேரன் / பேத்தி / මුණුබුරා / මිණිබිරිය / Grandchildயின் துணை</option>
+        <option>கொள்ளுப்பேரன் / கொள்ளுப்பேத்தி / මී මුණුබුරා / මී මිණිබිරිය / Great-grandchild</option>
+        <option>மற்றவை / වෙනත් / Other</option>
+      </select>
+
+      <label>குடும்பத்தின் சொந்த ஊர் / கிராமம் / පවුලේ මුල් ගම / Family Home Town / Village</label>
+      <input name="home_town" />
+
+      <label>திருமண தேதி / විවාහ දිනය / Marriage Date</label>
+      <input type="date" name="marriage_date" />
+    </div>
+
+    <div class="card">
+      <h2>3. குழந்தைகள் விவரங்கள் / දරුවන්ගේ විස්තර / Children Details</h2>
+
+      <label>குழந்தைகளின் எண்ணிக்கை * / දරුවන්ගේ සංඛ්‍යාව * / Number of Children *</label>
+      <select id="childrenCount" name="children_count" required>
+        <option value="0">0</option>
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+        <option value="7">7</option><option value="8">8</option>
+      </select>
+
+      <div id="childrenContainer"></div>
+    </div>
+
+    <div class="card">
+      <h2>4. கூடுதல் தகவல்கள் / අමතර තොරතුරු / Additional Information</h2>
+
+      <label>குடும்பப் புகைப்படம் / පවුලේ ඡායාරූපය / Family Photo <span class="hint">(விருப்பமானது / විකල්ප / Optional)</span></label>
+      <input type="file" name="family_photo" accept="image/*" />
+
+      <label>கூடுதல் தகவல் / திருத்தங்கள் / අමතර තොරතුරු / නිවැරදි කිරීම් / Additional Information / Corrections</label>
+      <textarea name="notes"></textarea>
+
+      <div class="checkline">
+        <input type="checkbox" id="consent" required />
+        <label for="consent" style="margin:0;font-weight:500">
+          நான் வழங்கிய தகவல்கள் சரியானவை என்றும், அவை எங்கள் தனிப்பட்ட குடும்ப மரம் / குடும்பத் தரவுத்தளத்திற்காக பயன்படுத்தப்படலாம் என்றும் உறுதிப்படுத்துகிறேன்.<br>මා විසින් ලබාදුන් තොරතුරු නිවැරදි බවත්, ඒවා අපගේ පුද්ගලික පවුල් වෘක්ෂය / පවුල් දත්ත ගබඩාව සඳහා භාවිතා කළ හැකි බවත් තහවුරු කරමි.<br>I confirm that the information provided is correct and may be used for our private family tree/database.
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="primary" type="submit">குடும்பத் தகவலை சமர்ப்பிக்கவும் / පවුල් තොරතුරු ඉදිරිපත් කරන්න / Submit Family Information</button>
+      <button class="secondary" type="button" onclick="downloadCSV()">என் தகவலை CSV கோப்பாக பதிவிறக்கவும் / මගේ තොරතුරු CSV ගොනුවක් ලෙස බාගන්න / Download My Entry as CSV</button>
+      <div id="success" class="success">
+        உங்கள் படிவம் பூர்த்தியாகிவிட்டது. இந்தப் பக்கம் ஆன்லைன் தரவுத்தளத்துடன் இணைக்கப்படாமல் இருந்தால், “என் தகவலை CSV கோப்பாக பதிவிறக்கவும் / මගේ තොරතුරු CSV ගොනුවක් ලෙස බාගන්න / Download My Entry as CSV” என்பதை பயன்படுத்தி குடும்ப ஒருங்கிணைப்பாளருக்கு அனுப்பவும்.
+      </div>
+    </div>
+  </form>
+
+  <footer>தனிப்பட்ட குடும்பத் தகவல் • இந்தப் படிவத்தை குடும்ப உறுப்பினர்களுடன் மட்டுமே பகிரவும்.<br>පුද්ගලික පවුල් තොරතුරු • මෙම පෝරමය පවුලේ සාමාජිකයන් සමඟ පමණක් බෙදාගන්න.<br>Private Family Information • Please share this form only with family members.</footer>
+</div>
+
+<script>
+
+const count = document.getElementById('childrenCount');
+const container = document.getElementById('childrenContainer');
+
+function renderChildren(){
+  container.innerHTML = '';
+  const n = Number(count.value || 0);
+
+  for(let i=1;i<=n;i++){
+    const div = document.createElement('div');
+    div.className = 'child';
+    div.innerHTML = `
+      <h3>குழந்தை ${i} / දරුවා ${i} / Child ${i}</h3>
+
+      <label>முழுப் பெயர் * / සම්පූර්ණ නම * / Full Name *</label>
+      <input name="child_${i}_name" required />
+
+      <div class="grid">
+        <div>
+          <label>பாலினம்</label>
+          <select name="child_${i}_gender">
+            <option value="">தேர்ந்தெடுக்கவும் / තෝරන්න / Select</option>
+            <option>ஆண் / පිරිමි / Male</option>
+            <option>பெண் / ගැහැණු / Female</option>
+          </select>
+        </div>
+
+        <div>
+          <label>பிறந்த தேதி / උපන් දිනය / Date of Birth</label>
+          <input type="date" name="child_${i}_dob" />
+        </div>
+      </div>
+
+      <label>பள்ளி / நர்சரி / பல்கலைக்கழகம் / පාසල / පෙර පාසල / විශ්වවිද්‍යාලය / School / Nursery / University</label>
+      <input name="child_${i}_school" />
+
+      <div class="grid">
+        <div>
+          <label>வகுப்பு / ஆண் / පිරිමි / Maleடு</label>
+          <input name="child_${i}_grade" placeholder="உதா: தரம் 5 / ஆண் / පිරිමි / Maleடு 10" />
+        </div>
+
+        <div>
+          <label>படிக்கும் நாடு / අධ්‍යාපනය ලබන රට / Country of Study</label>
+          <input name="child_${i}_country" />
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  }
+}
+
+count.addEventListener('change', renderChildren);
+renderChildren();
+
+document.getElementById('familyForm').addEventListener('submit', function(e){
+  const form = e.currentTarget;
+  const success = document.getElementById('success');
+
+  // Store selected photo filename only (actual image upload requires separate Drive upload workflow)
+  const photoInput = form.querySelector('input[type="file"][name="family_photo"]');
+  let hiddenPhoto = form.querySelector('input[name="family_photo_name"]');
+  if(!hiddenPhoto){
+    hiddenPhoto = document.createElement('input');
+    hiddenPhoto.type = 'hidden';
+    hiddenPhoto.name = 'family_photo_name';
+    form.appendChild(hiddenPhoto);
+  }
+  hiddenPhoto.value = (photoInput && photoInput.files && photoInput.files[0]) ? photoInput.files[0].name : '';
+
+  // Do not send the file input itself
+  if(photoInput) photoInput.disabled = true;
+
+  success.style.display = 'block';
+  success.innerHTML = 'சமர்ப்பிக்கப்படுகிறது...<br>ඉදිරිපත් කරමින්...<br>Submitting...';
+
+  setTimeout(function(){
+    success.innerHTML = 'நன்றி! உங்கள் குடும்பத் தகவல் சமர்ப்பிக்கப்பட்டது.<br>ස්තුතියි! ඔබගේ පවුල් තොරතුරු ඉදිරිපත් කරන ලදී.<br>Thank you! Your family information has been submitted.';
+    if(photoInput) photoInput.disabled = false;
+    form.reset();
+    count.value = '0';
+    renderChildren();
+    window.scrollTo({top:document.body.scrollHeight, behavior:'smooth'});
+  }, 1500);
+});
+
+function downloadCSV(){
+  const form = document.getElementById('familyForm');
+  const fd = new FormData(form);
+  const rows = [['புலம்','மதிப்பு']];
+
+  for(const [k,v] of fd.entries()){
+    if(v instanceof File) continue;
+    rows.push([k,v]);
+  }
+
+  const esc = s => '"' + String(s).replaceAll('"','""') + '"';
+  const csv = '\ufeff' + rows.map(r=>r.map(esc).join(',')).join('\n');
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'kudumba_maram_thagaval.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
